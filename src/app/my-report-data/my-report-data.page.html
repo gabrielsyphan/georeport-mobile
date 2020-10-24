@@ -1,0 +1,72 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>
+      Minha denúncia<ion-icon class="menu-outline" name="close-outline" (click)="closePage()"></ion-icon>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card >
+    <ion-card-header>
+      <ion-card-subtitle>
+        <img [src]="reportData.image" class="report-data-image">
+      </ion-card-subtitle>
+    </ion-card-header>
+  </ion-card>
+
+  <ion-card >
+    <ion-card-header>
+      <ion-card-subtitle>
+        <img src="../../assets/img/icone-titulo.png"> Titulo
+      </ion-card-subtitle>
+    </ion-card-header>
+    <ion-item>
+      {{reportData.title}}
+    </ion-item>
+  </ion-card>
+
+  <ion-card >
+    <ion-card-header>
+      <ion-card-subtitle>
+        <img src="../../assets/img/icone-tipo.png"> Tipo de denúncia
+      </ion-card-subtitle>
+    </ion-card-header>
+    <ion-item>
+      {{reportData.type}}
+    </ion-item>
+  </ion-card>
+
+  <ion-card >
+    <ion-card-header>
+      <ion-card-subtitle>
+        <img src="../../assets/img/icone-codigo.png"> Processo (Opcional)
+      </ion-card-subtitle>
+    </ion-card-header>
+    <ion-item>
+      {{reportData.process}}
+    </ion-item>
+  </ion-card>
+
+  <ion-card >
+    <ion-card-header>
+      <ion-card-subtitle>
+        <img src="../../assets/img/icone-hora.png"> Prazo
+      </ion-card-subtitle>
+    </ion-card-header>
+    <ion-item>
+      {{reportData.date.split('T')[0]}}
+    </ion-item>
+  </ion-card>
+
+  <ion-card >
+    <ion-card-header>
+      <ion-card-subtitle>
+        <img src="../../assets/img/icone-descricao.png"> Descrição
+      </ion-card-subtitle>
+    </ion-card-header>
+    <ion-item>
+      {{reportData.description}}
+    </ion-item>
+  </ion-card>
+</ion-content>

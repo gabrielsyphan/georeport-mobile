@@ -1,0 +1,36 @@
+<ion-menu side="end" menuId="first" contentId="mainMenu" id="sideMenu">
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>Menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-list>
+      <ion-item (click)="createReport()"><img src="../../assets/img/icone-notificacao.png">&emsp;Cadastrar nova denúncia</ion-item>
+      <ion-item (click)="confirmSignOut()"><img src="../../assets/img/icone-sair.png">&emsp;Sair</ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-router-outlet id="mainMenu"></ion-router-outlet>
+
+<ion-tabs>
+
+  <ion-tab-bar slot="bottom">
+    <ion-tab-button tab="tab1">
+      <ion-icon name="map"></ion-icon>
+      <ion-label class="tabLable">Mapa</ion-label>
+    </ion-tab-button>
+
+    <ion-tab-button tab="tab2">
+      <ion-icon name="alert-outline"></ion-icon>
+      <ion-label class="tabLable">Minhas denúncias</ion-label>
+    </ion-tab-button>
+
+<!--    <ion-tab-button tab="tab3">-->
+<!--      <ion-icon name="list"></ion-icon>-->
+<!--      <ion-label class="tabLable">Denúncias</ion-label>-->
+<!--    </ion-tab-button>-->
+  </ion-tab-bar>
+
+</ion-tabs>

@@ -1,0 +1,8 @@
+{
+  "name": "govtrack",
+  "integrations": {
+    "capacitor": {},
+    "cordova": {}
+  },
+  "type": "angular"
+}

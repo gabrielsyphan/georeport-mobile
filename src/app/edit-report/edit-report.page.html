@@ -1,0 +1,99 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>
+      Editar denúncia<ion-icon class="menu-outline" name="close-outline" (click)="closePage()"></ion-icon>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form (ngSubmit)="updateReport()">
+    <ion-card >
+      <ion-card-header>
+        <ion-card-subtitle>
+          <img src="../../assets/img/icone-tipo.png"> Tipo de denúncia
+        </ion-card-subtitle>
+      </ion-card-header>
+      <ion-item>
+        <ion-select id="type" value="{{reportData.type}}" name="type" required>
+          <ion-select-option value="1" >Estabelecimento Irregular</ion-select-option>
+          <ion-select-option value="2" >Descarte Irregular de Lixo</ion-select-option>
+          <ion-select-option value="3" >Buraco na via</ion-select-option>
+          <ion-select-option value="4" >Lampada queimada</ion-select-option>
+          <ion-select-option value="5" >Calçada irregular</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-card>
+
+
+    <ion-card >
+      <ion-card-header>
+        <ion-card-subtitle>
+          <img src="../../assets/img/icone-titulo.png"> Titulo
+        </ion-card-subtitle>
+      </ion-card-header>
+      <ion-item>
+        <ion-input type="text" id="title" placeholder="Outdoor irregular" value="{{reportData.title}}" name="title" required></ion-input>
+      </ion-item>
+    </ion-card>
+
+    <ion-card >
+      <ion-card-header>
+        <ion-card-subtitle>
+          <img src="../../assets/img/icone-codigo.png"> Processo (Opcional)
+        </ion-card-subtitle>
+      </ion-card-header>
+      <ion-item>
+        <ion-input type="number" id="process" placeholder="123/2019" value="{{reportData.process}}" name="process" required></ion-input>
+      </ion-item>
+    </ion-card>
+
+    <ion-card >
+      <ion-card-header>
+        <ion-card-subtitle>
+          <img src="../../assets/img/icone-hora.png"> Prazo
+        </ion-card-subtitle>
+      </ion-card-header>
+      <ion-item>
+        <ion-datetime id="date" displayFormat="DD/MM/YYYY" placeholder="Selecione o prazo de conclusão da denúncia" min="2019" max="2099-12-31" value="{{reportData.date}}" name="date" required></ion-datetime>
+      </ion-item>
+    </ion-card>
+
+    <ion-card >
+      <ion-card-header>
+        <ion-card-subtitle>
+          <img src="../../assets/img/icone-descricao.png"> Descrição
+        </ion-card-subtitle>
+      </ion-card-header>
+      <ion-item>
+        <ion-textarea id="description" rows="6" placeholder="Insira uma descrição detalhada sobre a denúncia." name="description" value="{{reportData.description}}" required></ion-textarea>
+      </ion-item>
+    </ion-card>
+
+    <ion-card >
+      <ion-card-header>
+        <ion-card-subtitle>
+          <img src="../../assets/img/icone-upload.png"> Foto da denúncia
+        </ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-item>
+        <ion-thumbnail slot="start">
+          <div class="imageBox">
+            <ion-img *ngIf="reportImage" [src]="reportData.image"></ion-img>
+            <ion-img *ngIf="!reportImage" src="../../assets/img/avatar.png"></ion-img>
+          </div>
+        </ion-thumbnail>
+
+        <ion-button *ngIf="!reportImage" slot="end" color="light" size="small" (click)="takePicture()">Adicionar
+        </ion-button>
+        <ion-button *ngIf="reportImage" slot="end" color="danger" size="small" (click)="removePicture()">Remover
+        </ion-button>
+      </ion-item>
+    </ion-card>
+
+    <ion-card >
+      <ion-button type="submit" class="btnDefault">Atualizar denúncia</ion-button>
+    </ion-card>
+  </form>
+</ion-content>

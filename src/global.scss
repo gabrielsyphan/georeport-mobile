@@ -1,0 +1,95 @@
+/*
+ * App Global CSS
+ * ----------------------------------------------------------------------------
+ * Put style rules here that you want to apply globally. These styles are for
+ * the entire app and not just one component. Additionally, this file can be
+ * used as an entry point to import other CSS/Sass files to be included in the
+ * output CSS.
+ * For more information on global stylesheets, visit the documentation:
+ * https://ionicframework.com/docs/layout/global-stylesheets
+ */
+
+/* Core CSS required for Ionic components to work properly */
+@import "~@ionic/angular/css/core.css";
+
+/* Basic CSS for apps built with Ionic */
+@import "~@ionic/angular/css/normalize.css";
+@import "~@ionic/angular/css/structure.css";
+@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/display.css';
+
+/* Optional CSS utils that can be commented out */
+@import "~@ionic/angular/css/padding.css";
+@import "~@ionic/angular/css/float-elements.css";
+@import "~@ionic/angular/css/text-alignment.css";
+@import "~@ionic/angular/css/text-transformation.css";
+@import "~@ionic/angular/css/flex-utils.css";
+
+.btnExpand{
+  --background: #df514f;
+  --background-activated: #df514f;
+  --background-hover: #df514f;
+}
+
+:root {
+	--ion-color-primary: #df514f;
+    --ion-color-secondary: #b1b1b1;
+    --ion-font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";;
+    font-size: 1rem;
+}
+
+.confirm{
+  --background: #df514f !important;
+  --background-hover: #df514f !important;
+  color: #ffffff;
+  width: 100%;
+  position: relative;
+  top: 30px;
+  font-family: "Dosis", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 1px;
+  display: inline-block;
+  border-radius: 3px;
+  transition: 0.5s;
+  text-transform: uppercase;
+  margin: 0;
+  padding-inline-start: calc(var(--padding-start) + var(--ion-safe-area-left, 0px));
+}
+
+.btnDefault{
+  --background: #df514f !important;
+  --background-hover: #df514f !important;
+  color: #ffffff;
+  width: 100%;
+  position: relative;
+  font-family: "Dosis", sans-serif;
+  font-weight: 500;
+  font-size: 14px;
+  letter-spacing: 1px;
+  display: inline-block;
+  border-radius: 3px;
+  transition: 0.5s;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.btnDefault-2{
+  font-weight: 500;
+  font-size: 14px;
+  width: 100%;
+  letter-spacing: 1px;
+  display: inline-block;
+  border-radius: 3px;
+  transition: 0.5s;
+  text-transform: uppercase;
+  --background: #f9f9f9;
+  color: #df514f;
+  --border: 1px solid #df514f;
+}
+
+.menu-outline{
+  display: flex;
+  float: right;
+  font-size: 25px;
+}

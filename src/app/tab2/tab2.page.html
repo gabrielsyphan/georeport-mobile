@@ -1,0 +1,58 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>
+      Minhas denúncias <ion-icon class="menu-outline" name="menu-outline" (click)="this.reportService.openMenu()"></ion-icon>
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <!-- List of Sliding Items -->
+  <ion-list>
+    <ion-searchbar (ionInput)="searchReport($event)" clearInput></ion-searchbar>
+    <ion-item-sliding *ngFor="let report of reportService.reports">
+      <ion-item (click)="openReportData(report.id)">
+        <ion-avatar slot="start">
+          <img src="{{report.image}}">
+        </ion-avatar>
+        <ion-label>
+          <p>{{report.title}}</p>
+        </ion-label>
+        <ion-icon name="arrow-forward-outline"></ion-icon>
+      </ion-item>
+      <ion-item-options side="end">
+        <ion-item-option *ngIf="report.sent == 0" (click)="this.reportService.confirmSendReport(report.id)">Enviar</ion-item-option>
+        <ion-item-option color="light" *ngIf="report.sent == 1" (click)="sendTextBox()">Enviada</ion-item-option>
+        <ion-item-option (click)="openEditReport(report.id)">Editar</ion-item-option>
+        <ion-item-option (click)="this.reportService.confirmDeleteReport(report.id)">Apagar</ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+  </ion-list>
+
+<!--  <ion-fab horizontal="end" vertical="bottom" slot="fixed" activated>-->
+<!--    <ion-fab-button class="btnExpand">-->
+<!--      <ion-icon name="contract-outline"></ion-icon>-->
+<!--    </ion-fab-button>-->
+
+<!--    <ion-fab-list side="start">-->
+<!--      <ion-fab-button (click)="confirmSendLocales()">-->
+<!--            <ion-icon name="add-outline"></ion-icon>-->
+<!--      </ion-fab-button>-->
+<!--      <ion-fab-button (click)="confirmClearLocales()">-->
+<!--        <ion-icon name="trash"></ion-icon>-->
+<!--      </ion-fab-button>-->
+<!--    </ion-fab-list>-->
+
+<!--    <ion-fab-list side="top">-->
+<!--      <ion-fab-button (click)="confirmSignOut()">-->
+<!--        <ion-icon name="exit-outline"></ion-icon>-->
+<!--      </ion-fab-button>-->
+<!--    </ion-fab-list>-->
+<!--  </ion-fab>-->
+
+<!--  <ion-fab vertical="bottom" horizontal="end" slot="fixed" (click)="confirmSignOut()">-->
+<!--    <ion-fab-button class="btnExpand">-->
+<!--      <ion-icon name="exit-outline"></ion-icon>-->
+<!--    </ion-fab-button>-->
+<!--  </ion-fab>-->
+</ion-content>

@@ -1,0 +1,118 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title>
+      <img src="../../assets/img/icone-notificacao.png"> Cadastrar denúncia
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content>
+  <!--  <ion-slides pager>-->
+  <!--    <ion-slide>-->
+  <!--      <img id="slideImage" [src]="reportImage">-->
+  <!--    </ion-slide>-->
+  <!--  </ion-slides>-->
+
+  <form (ngSubmit)="confirmSubmit()">
+    <ion-card >
+      <ion-card-header>
+        <ion-card-subtitle>
+          <img src="../../assets/img/icone-tipo.png"> Tipo de denúncia
+        </ion-card-subtitle>
+      </ion-card-header>
+      <ion-item>
+        <ion-select id="type" placeholder="irregularidade" okText="OK" cancelText="CANCELAR" [(ngModel)]="formData.type" name="type" required>
+          <ion-select-option value="1">Estabelecimento Irregular</ion-select-option>
+          <ion-select-option value="2">Descarte Irregular de Lixo</ion-select-option>
+          <ion-select-option value="3">Buraco na via</ion-select-option>
+          <ion-select-option value="4">Lampada queimada</ion-select-option>
+          <ion-select-option value="5">Calçada irregular</ion-select-option>
+        </ion-select>
+      </ion-item>
+    </ion-card>
+
+
+    <ion-card >
+      <ion-card-header>
+        <ion-card-subtitle>
+          <img src="../../assets/img/icone-titulo.png"> Titulo
+        </ion-card-subtitle>
+      </ion-card-header>
+      <ion-item>
+        <ion-input type="text" id="title" placeholder="Outdoor irregular" [(ngModel)]="formData.title" name="title" required></ion-input>
+      </ion-item>
+    </ion-card>
+
+    <ion-card >
+      <ion-card-header>
+        <ion-card-subtitle>
+          <img src="../../assets/img/icone-codigo.png"> Processo (Opcional)
+        </ion-card-subtitle>
+      </ion-card-header>
+      <ion-item>
+        <ion-input type="number" id="process" placeholder="123/2019" [(ngModel)]="formData.process" name="process" required></ion-input>
+      </ion-item>
+    </ion-card>
+
+    <ion-card >
+      <ion-card-header>
+        <ion-card-subtitle>
+          <img src="../../assets/img/icone-hora.png"> Prazo
+        </ion-card-subtitle>
+      </ion-card-header>
+      <ion-item>
+        <ion-datetime id="date" displayFormat="DD/MM/YYYY" placeholder="Selecione o prazo de conclusão da denúncia" min="2019" max="2099-12-31" [(ngModel)]="formData.date" name="date" required></ion-datetime>
+      </ion-item>
+    </ion-card>
+
+    <ion-card >
+      <ion-card-header>
+        <ion-card-subtitle>
+          <img src="../../assets/img/icone-descricao.png"> Descrição
+        </ion-card-subtitle>
+      </ion-card-header>
+      <ion-item>
+        <ion-textarea id="description" rows="6" placeholder="Insira uma descrição detalhada sobre a denúncia." [(ngModel)]="formData.description" name="description" required></ion-textarea>
+      </ion-item>
+    </ion-card>
+
+    <ion-card >
+      <ion-card-header>
+        <ion-card-subtitle>
+          <img src="../../assets/img/icone-upload.png"> Foto da denúncia
+        </ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-item>
+        <ion-thumbnail slot="start">
+          <div class="imageBox">
+            <ion-img *ngIf="reportImage" [src]="reportImage"></ion-img>
+            <ion-img *ngIf="!reportImage" src="../../assets/img/avatar.png"></ion-img>
+          </div>
+        </ion-thumbnail>
+
+        <ion-button *ngIf="!reportImage" slot="end" color="light" size="small" (click)="takePicture()">Adicionar
+        </ion-button>
+        <ion-button *ngIf="reportImage" slot="end" color="danger" size="small" (click)="removePicture()">Remover
+        </ion-button>
+      </ion-item>
+    </ion-card>
+
+    <ion-card >
+      <ion-button type="submit" class="btnDefault" (click)="createReport()">Cadastrar</ion-button>
+    </ion-card>
+  </form>
+  <!--  <div style="width: 100%; position: relative; bottom: -5px">-->
+  <!--    <button class="btn-1" (click)="takePicture()">-->
+  <!--      <ion-icon name="images"></ion-icon>-->
+  <!--      Adicionar imagem-->
+  <!--    </button>-->
+  <!--  </div>-->
+
+  <!--  <ion-fab horizontal="end" vertical="center" slot="fixed">-->
+  <!--    <ion-fab-button  (click)="takePicture2()">-->
+  <!--      <ion-icon name="camera"></ion-icon>-->
+  <!--    </ion-fab-button>-->
+  <!--  </ion-fab>-->
+</ion-content>
