@@ -1,10 +1,11 @@
 <ion-header [translucent]="true">
   <ion-toolbar color="primary">
-    <ion-title>
-      Editar denúncia<ion-icon class="menu-outline" name="close-outline" (click)="closePage()"></ion-icon>
+    <ion-title style="text-align: center">
+      <ion-icon class="menu-outline-left" name="arrow-back-outline" (click)="closePage()"></ion-icon> Editar denúncia
     </ion-title>
   </ion-toolbar>
 </ion-header>
+
 
 <ion-content>
   <form (ngSubmit)="updateReport()">

@@ -4,6 +4,7 @@ import { Storage } from '@ionic/storage';
 import {AlertController, LoadingController} from '@ionic/angular';
 import { MenuController } from '@ionic/angular';
 import {Geolocation} from '@ionic-native/geolocation/ngx';
+import {Router} from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -20,14 +21,18 @@ export class ReportService {
       public loadingController: LoadingController,
       public alertController: AlertController,
       public menu: MenuController,
-      public geolocation: Geolocation
+      public geolocation: Geolocation,
+      private router: Router
   ) { }
 
   async loadSaved(){
     this.storage.get('reports').then((reports) => {
+      this.reports = [];
       reports.forEach((report) => {
-        if (report.registration == this.user[0].registration) {
-          this.reports.push(report);
+        if (report.registration) {
+          if (report.registration == this.user[0].registration) {
+            this.reports.push(report);
+          }
         }
       });
     });
@@ -36,6 +41,9 @@ export class ReportService {
   }
 
   async newReport(data) {
+    const fDate = data.date;
+    const fType = data.type;
+
     this.geolocation.getCurrentPosition().then((resp) => {
       const reportId = this.idCount();
 
@@ -45,10 +53,10 @@ export class ReportService {
 
       this.reports.push({
         id: reportId,
-        subtype: data.type,
+        subtype: 51,
         title: data.title,
         process: data.process,
-        date: data.date,
+        date: fDate,
         description: data.description,
         image: data.image,
         sent: 0,
@@ -58,7 +66,8 @@ export class ReportService {
         latitude: resp.coords.latitude,
         longitude: resp.coords.longitude,
         accuracy: resp.coords.accuracy,
-        type : 51
+        // tslint:disable-next-line:radix
+        type : parseInt(fType)
       });
 
       this.storage.set('reports', this.reports).then((reports) => {
@@ -78,7 +87,7 @@ export class ReportService {
     const auxReports = Object.values(this.reports);
     auxReports.forEach((report, i) => {
       if (report.id === reportId){
-        const link = 'https://semecmaceio.com/maceio-geo/json/maceiogeoreports.php';
+        const link = 'https://www.syphan.com.br/georeport/api/createReport.php';
         const myData = {
           organ: report.organ,
           registration: report.registration,
@@ -96,15 +105,18 @@ export class ReportService {
 
         this.http.post(link, myData, {headers: new HttpHeaders({'Content-Type': 'application/json'})})
             .subscribe(dataFromService => {
-              // tslint:disable-next-line:triple-equals
+              console.log(dataFromService);
               // @ts-ignore
-              if(dataFromService.status == 1) {
+              if (dataFromService.status == 1) {
                 report.sent = 1;
                 this.reports = Object.values(auxReports);
                 this.storage.set('reports', this.reports).then((reports) => {
                   this.loading.dismiss();
                   this.alertBox('Sucesso!', 'A denúncia foi enviada.');
                 });
+              }else {
+                this.loading.dismiss();
+                this.alertBox('Erro!', 'Não foi possível enviar a denúncia.');
               }
               // tslint:disable-next-line:no-unused-expression
             }), err => {
@@ -156,7 +168,7 @@ export class ReportService {
       }
     });
 
-    await this.storage.set ('reports', this.reports);
+    await this.storage.set('reports', this.reports);
     this.loading.dismiss();
     this.alertBox('Sucesso!', 'A denúncia foi atualizada.');
   }
@@ -165,7 +177,26 @@ export class ReportService {
     await this.user.push({
       registration,
       name,
-      organ
+      organ,
+      session: 0
+    });
+    this.storage.set('user', this.user);
+  }
+
+  async checkUser() {
+    this.storage.get('user').then((user) => {
+      if (user) {
+        this.user = user || [];
+        if (this.user[0].session != 0) {
+          this.router.navigateByUrl('');
+        } else {
+          this.user[0].session = 1;
+          this.storage.set('user', this.user);
+          this.router.navigateByUrl('welcome');
+        }
+      } else {
+        this.router.navigateByUrl('login');
+      }
     });
   }
 
@@ -265,5 +296,6 @@ class User {
   registration: any;
   organ: any;
   name: any;
+  session: any;
 }
 

@@ -26,11 +26,14 @@ export class CreateReportPage implements OnInit {
       this.reportService.alertBox ('Erro!', 'Por favor, insira uma foto da denúncia');
     }else{
       this.formData.image = this.reportImage;
-      // tslint:disable-next-line:max-line-length
-      if (this.formData.type === undefined || this.formData.title === undefined || this.formData.date === undefined || this.formData.description === undefined) {
+      if (this.formData.type === undefined || this.formData.title === undefined || this.formData.date === undefined
+          || this.formData.description === undefined) {
         await this.reportService.loading.dismiss();
         this.reportService.alertBox('Erro!', 'Por favor, preencha todos os campos.');
-      }else {
+      } else {
+        if (this.formData.process === undefined) {
+          this.formData.process = null;
+        }
         await this.reportService.newReport (this.formData);
         (document.getElementById('type') as HTMLInputElement).value = '';
         (document.getElementById('title') as HTMLInputElement).value = '';
@@ -74,8 +77,8 @@ export class CreateReportPage implements OnInit {
         {
           text: 'Confirmar',
           role: 'Confirmar',
-          handler: () => {
-            this.reportService.presentLoading();
+          handler: async () => {
+            await this.reportService.presentLoading();
             this.submitForm();
           }
         }

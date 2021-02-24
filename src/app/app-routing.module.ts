@@ -21,6 +21,21 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
+    path: 'listReports',
+    redirectTo: '/tabs/listReports',
+    pathMatch: 'full'
+  },
+  {
+    path: 'neighborhoodReportList',
+    redirectTo: '/tabs/neighborhoodReportList',
+    pathMatch: 'full'
+  },
+  {
+    path: 'webchat',
+    redirectTo: '/tabs/webchat',
+    pathMatch: 'full'
+  },
+  {
     path: 'create-report',
     loadChildren: () => import('./create-report/create-report.module').then( m => m.CreateReportPageModule)
   },
@@ -31,6 +46,38 @@ const routes: Routes = [
   {
     path: 'edit-report',
     loadChildren: () => import('./edit-report/edit-report.module').then( m => m.EditReportPageModule)
+  },
+  {
+    path: 'list-reports',
+    loadChildren: () => import('./list-reports/list-reports.module').then( m => m.ListReportsPageModule)
+  },
+  {
+    path: 'neighbodhoor-report-list',
+    loadChildren: () => import('./neighbodhoor-report-list/neighbodhoor-report-list.module').then( m => m.NeighbodhoorReportListPageModule)
+  },
+  {
+    path: 'online-report-data',
+    loadChildren: () => import('./online-report-data/online-report-data.module').then( m => m.OnlineReportDataPageModule)
+  },
+  {
+    path: 'webchat',
+    loadChildren: () => import('./webchat/webchat.module').then( m => m.WebchatPageModule)
+  },
+  {
+    path: 'register-account',
+    loadChildren: () => import('./register-account/register-account.module').then( m => m.RegisterAccountPageModule)
+  },
+  {
+    path: 'create-notification',
+    loadChildren: () => import('./create-notification/create-notification.module').then( m => m.CreateNotificationPageModule)
+  },
+  {
+    path: 'welcome',
+    loadChildren: () => import('./welcome/welcome.module').then( m => m.WelcomePageModule)
+  },
+  {
+    path: 'home',
+    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
   }
 ];
 @NgModule({

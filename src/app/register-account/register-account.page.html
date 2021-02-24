@@ -1,0 +1,51 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title style="text-align: center">
+      <ion-icon class="menu-outline-left" name="arrow-back-outline" (click)="closePage()"></ion-icon> Cadastrar novo usuário
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="divImage">
+    <img class="imgLogo" src="../../assets/img/perfil.png">
+  </div>
+
+  <div class="ion-padding formLogin" style="text-align: center">
+    <ion-item class="ion-margin-top">
+      <ion-icon name="apps-outline"></ion-icon>
+      <ion-input class="myInput" id="" type="number" placeholder="Matrícula"></ion-input>
+    </ion-item>
+
+    <ion-item class="ion-margin-top">
+      <ion-icon name="person-outline"></ion-icon>
+      <ion-input class="myInput" id="" type="text" placeholder="Nome"></ion-input>
+    </ion-item>
+
+    <ion-item class="ion-margin-top">
+      <ion-icon name="mail-outline"></ion-icon>
+      <ion-input class="myInput" id="" type="email" placeholder="Email"></ion-input>
+    </ion-item>
+
+    <ion-item class="ion-margin-top">
+      <ion-icon name="call-outline"></ion-icon>
+      <ion-input class="myInput" id="" type="number" placeholder="Telefone"></ion-input>
+    </ion-item>
+
+    <ion-item class="ion-margin-top">
+      <ion-icon name="business-outline"></ion-icon>
+      <ion-select placeholder="Órgão:" okText="OK" cancelText="CANCELAR">
+        <ion-label>Órgão</ion-label>
+        <ion-select-option value="1">SEMEC</ion-select-option>
+        <ion-select-option value="2">SEMGE</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item class="ion-margin-top">
+      <ion-icon name="lock-closed-outline"></ion-icon>
+      <ion-input class="myInput" id="agentPassword" type="password" placeholder="Senha"></ion-input>
+    </ion-item>
+
+    <ion-button style="margin-top: 20px;" class="btnDefault" (click)="createAccount()">Cadastrar</ion-button>
+  </div>
+</ion-content>

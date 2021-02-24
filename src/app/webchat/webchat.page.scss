@@ -1,0 +1,69 @@
+.class-name {
+  --background: url('../../assets/img/background.png') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+}
+
+.ion-message {
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+}
+
+ion-input {
+  background: white;
+  border-radius: 20px;
+  width: 90%;
+  padding: 0 20px !important;
+}
+
+ion-item {
+  --highlight-color-focused: none !important;
+  --highlight-background: none !important;
+  --background: transparent;
+}
+
+ion-icon {
+  width: 10%;
+  color: white;
+}
+
+.messageContent {
+  margin-bottom: 52px;
+  width: 100%;
+}
+
+.myMessage{
+  background: white;
+}
+
+.outherMessage {
+  background: #efefef;
+}
+
+.messageContainer {
+  width: 100%;
+  padding: 10px 20px 10px 10px;
+  margin-bottom: 52px
+}
+
+.messageBox {
+  padding: 10px 20px;
+  border-radius: 20px;
+  max-width: 100%;
+  margin: 2%;
+  width: fit-content;
+}
+
+ion-col {
+  max-width: 100%;
+}
+
+p {
+  margin: 0;
+}
+
+.userName {
+  font-weight: bold;
+}

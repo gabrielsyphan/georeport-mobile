@@ -21,11 +21,6 @@ export class TabsPage {
       public reportService: ReportService,
   ) {}
 
-  async createReport(){
-    this.reportService.closeMenu();
-    this.router.navigateByUrl('createReport');
-  }
-
   async confirmSignOut(){
     const alert = await this.alertController.create({
       header: 'Deseja mesmo sair de sua conta?',
@@ -48,10 +43,17 @@ export class TabsPage {
 
   async signOut(){
     await this.presentLoading();
+
     this.reportService.user = [];
+    this.reportService.storage.remove('user');
     this.reportService.reports = [];
-    this.router.navigateByUrl('login');
-    this.loading.dismiss();
+
+    await this.loading.dismiss();
+
+    setTimeout(() => {
+      location.reload();
+    }, 500);
+    // this.router.navigateByUrl('login');
   }
 
   async presentLoading() {
@@ -61,5 +63,30 @@ export class TabsPage {
       translucent: true,
     });
     return this.loading.present();
+  }
+
+  createReport(){
+    this.reportService.closeMenu();
+    this.router.navigateByUrl('createReport');
+  }
+
+  mapPage() {
+    this.reportService.closeMenu();
+    this.router.navigateByUrl('');
+  }
+
+  myReports() {
+    this.reportService.closeMenu();
+    this.router.navigateByUrl('tab2');
+  }
+
+  listReports() {
+    this.reportService.closeMenu();
+    this.router.navigateByUrl('listReports');
+  }
+
+  webChat() {
+    this.reportService.closeMenu();
+    this.router.navigateByUrl('webchat');
   }
 }

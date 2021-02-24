@@ -1,0 +1,50 @@
+<ion-header>
+  <div class="padding-20 div-header">
+    <h4>Bem-vindo ao Georeport!</h4>
+  </div>
+</ion-header>
+
+<ion-content>
+  <div class="card-container" style="margin-top: 20px;">
+    <div class="div-card">
+      <div class="red-circle">
+        <ion-icon name="map-sharp"></ion-icon>
+      </div>
+      <p>Mapa</p>
+    </div>
+    <div class="div-card margin-left">
+      <div class="red-circle">
+        <ion-icon name="megaphone-sharp"></ion-icon>
+      </div>
+      <p>Nova denúncia</p>
+    </div>
+  </div>
+  <div class="card-container">
+    <div class="div-card">
+      <div class="red-circle">
+        <ion-icon name="person-sharp"></ion-icon>
+      </div>
+      <p>Minhas denúncias</p>
+    </div>
+    <div class="div-card margin-left">
+      <div class="red-circle">
+        <ion-icon name="alert-sharp"></ion-icon>
+      </div>
+      <p>Pendentes</p>
+    </div>
+  </div>
+  <div class="card-container">
+    <div class="div-card">
+      <div class="red-circle">
+        <ion-icon name="chatbubbles-sharp"></ion-icon>
+      </div>
+      <p>Chat</p>
+    </div>
+    <div class="div-card margin-left" (click)="confirmSignOut()">
+      <div class="red-circle">
+        <ion-icon name="exit-sharp"></ion-icon>
+      </div>
+      <p>Sair</p>
+    </div>
+  </div>
+</ion-content>

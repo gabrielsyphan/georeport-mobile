@@ -1,19 +1,21 @@
 <ion-content>
-	<img class="imgLogo" src="../../assets/img/logoName.png">
+	<img class="imgLogo" src="../../assets/img/navbar.png">
 
-	<div class="ion-padding formLogin">    
+	<div class="ion-padding formLogin" style="text-align: center">
 		<ion-item class="ion-margin-top">
-			<ion-input class="myInput" id="userLogin" type="text" placeholder="     Login"></ion-input>
+			<ion-icon name="apps-outline"></ion-icon>
+			<ion-input class="myInput" id="userLogin" type="text" placeholder="Matrícula"></ion-input>
 		</ion-item>
 
 		<ion-item class="ion-margin-top">
-			<ion-input class="myInput" id="userPassword" type="password" placeholder="     Senha"></ion-input>
+			<ion-icon name="lock-closed-outline"></ion-icon>
+			<ion-input class="myInput" id="userPassword" type="password" placeholder="Senha"></ion-input>
 		</ion-item>
 
-		<div class="diMessage">
+		<div class="divMessage">
 			<span class="messageLine">Login Geo-Report</span>
 		</div>
 
-		<ion-button class="confirm" (click)="validateLogin()">Entrar</ion-button>
+		<ion-button class="btnDefault inline-start" (click)="validateLogin($event.target)" style="right: 7px;">Entrar</ion-button>
 	</div>
 </ion-content>

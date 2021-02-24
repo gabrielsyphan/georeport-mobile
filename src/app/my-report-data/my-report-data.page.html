@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar color="primary">
-    <ion-title>
-      Minha denúncia<ion-icon class="menu-outline" name="close-outline" (click)="closePage()"></ion-icon>
+    <ion-title style="text-align: center">
+      <ion-icon class="menu-outline-left" name="arrow-back-outline" (click)="closePage()"></ion-icon> Minha denúncia
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -33,7 +33,7 @@
       </ion-card-subtitle>
     </ion-card-header>
     <ion-item>
-      {{reportData.type}}
+      {{reportType}}
     </ion-item>
   </ion-card>
 

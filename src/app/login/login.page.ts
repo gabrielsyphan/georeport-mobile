@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
-import { AlertController } from '@ionic/angular';
+import {AlertController, ModalController} from '@ionic/angular';
 import { LoadingController } from '@ionic/angular';
 import {ReportService} from '../report/report.service';
+import {RegisterAccountPage} from '../register-account/register-account.page';
 
 @Component({
   selector: 'app-login',
@@ -19,26 +20,32 @@ export class LoginPage implements OnInit {
     public alertController: AlertController,
     public loadingController: LoadingController,
     public reportService: ReportService,
+    public modalController: ModalController
   ) { }
 
   ngOnInit() {
   }
 
-  async validateLogin(){
+  async validateLogin(element){
     await this.presentLoading();
     const login = (document.getElementById('userLogin') as HTMLInputElement).value;
     const password = (document.getElementById('userPassword') as HTMLInputElement).value;
 
-    const link = 'https://semecmaceio.com/maceio-geo/json/loginapp.php';
+    const link = 'https://www.syphan.com.br/georeport/api/validateLogin.php';
     const myData = {registration: login, password, team: 1};
     this.http.post<any[]>(link, myData, {headers: new HttpHeaders({'Content-Type': 'application/json'})})
         .subscribe(dataFromService => {
             // @ts-ignore
             if (dataFromService.response == 1){
                 // @ts-ignore
-                this.reportService.loginUser(login, dataFromService.name, 1);
+                this.reportService.loginUser(login, dataFromService.name);
                 this.loading.dismiss();
-                this.router.navigateByUrl('');
+                element.classList.add('btnTransition');
+
+                setTimeout(() => {
+                    location.reload();
+                  // this.router.navigateByUrl('');
+                }, 500);
             }else{
                 this.loading.dismiss();
                 this.alertBox('Alerta!', 'Não existe usuário com essa combinação de login e senha.');
@@ -63,5 +70,13 @@ export class LoginPage implements OnInit {
     });
 
     await alert.present();
+  }
+
+  registerAccout() {
+      this.modalController.create({
+          component: RegisterAccountPage,
+      }).then((modalElement) => {
+          modalElement.present();
+      });
   }
 }

@@ -1,0 +1,44 @@
+ion-content{
+  --padding: 30px;
+}
+
+p {
+  margin-top: 10px;
+  color: #565656;
+  font-size: 14px;
+}
+
+h5 {
+  color: #313131;
+}
+
+ion-icon {
+  color: #ff787c;
+  font-size: 25px;
+}
+
+.red-circle {
+  margin-top: 20px;
+  background: #ffebec;
+  padding: 15px;
+  width: 42%;
+  border-radius: 61px;
+  margin-left: 31%;
+}
+
+.div-card {
+  width: 47%;
+  height: 135px;
+  background: #fff;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.card-container {
+  padding: 10px 20px;
+  text-align: center;
+  display: flex;
+}
+
+.margin-left {
+  margin-left: 6%;
+}

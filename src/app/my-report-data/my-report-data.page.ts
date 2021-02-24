@@ -11,6 +11,7 @@ import { ReportService } from '../report/report.service';
 export class MyReportDataPage implements OnInit {
   public reportId: any;
   public reportData: any;
+  public reportType: any;
 
   constructor(
       private router: Router,
@@ -31,22 +32,22 @@ export class MyReportDataPage implements OnInit {
     // tslint:disable-next-line:radix
     switch (parseInt(this.reportData.type)) {
       case 1:
-        this.reportData.type = 'Estabelecimento Irregular';
+        this.reportType = 'Estabelecimento Irregular';
         break;
       case 2:
-        this.reportData.type = 'Descarte Irregular de Lixo';
+        this.reportType = 'Descarte Irregular de Lixo';
         break;
       case 3:
-        this.reportData.type = 'Buraco na via';
+        this.reportType = 'Buraco na via';
         break;
       case 4:
-        this.reportData.type = 'Lampada queimada';
+        this.reportType = 'Lampada queimada';
         break;
       case 5:
-        this.reportData.type = 'Calçada irregular';
+        this.reportType = 'Calçada irregular';
         break;
       default:
-        this.reportData.type = 'undefined';
+        this.reportType = 'undefined';
         break;
     }
   }

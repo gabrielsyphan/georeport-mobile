@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { ReportService } from '../report/report.service';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders} from '@angular/common/http';
@@ -11,16 +11,24 @@ import { EditReportPage } from '../edit-report/edit-report.page';
   templateUrl: 'tab2.page.html',
   styleUrls: ['tab2.page.scss']
 })
-export class Tab2Page {
+export class Tab2Page implements OnInit{
+  public reports: any;
 
   constructor(
       public reportService: ReportService,
-      private router: Router,
       public http: HttpClient,
       public navCtrl: NavController,
-      public modalController: ModalController
-
+      public modalController: ModalController,
+      private router: Router
   ) {}
+
+  async ngOnInit(event?) {
+    await this.reportService.loadSaved();
+
+    if (event) {
+      event.target.complete();
+    }
+  }
 
   async openReportData(reportId) {
     this.modalController.create({
@@ -31,6 +39,10 @@ export class Tab2Page {
     }).then((modalElement) => {
       modalElement.present();
     });
+  }
+
+  createNewReport() {
+    this.router.navigateByUrl('createReport');
   }
 
   openEditReport(reportId) {
@@ -68,5 +80,9 @@ export class Tab2Page {
         options.style.display = 'none';
       });
     }
+  }
+
+  doRefresh(event) {
+    this.ngOnInit(event);
   }
 }

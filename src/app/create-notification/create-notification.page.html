@@ -1,0 +1,59 @@
+<ion-header [translucent]="true">
+  <ion-toolbar color="primary">
+    <ion-title style="text-align: center">
+      <ion-icon class="menu-outline-left" name="arrow-back-outline" (click)="closePage()"></ion-icon> Cadastrar chamado
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form (ngSubmit)="confirmSubmit()">
+    <ion-card >
+      <ion-card-header>
+        <ion-card-subtitle>
+          <img src="../../assets/img/icone-titulo.png"> Titulo
+        </ion-card-subtitle>
+      </ion-card-header>
+      <ion-item>
+        <ion-input type="text" id="title" placeholder="Outdoor irregular" [(ngModel)]="formData.title" name="title" required></ion-input>
+      </ion-item>
+    </ion-card>
+
+    <ion-card >
+      <ion-card-header>
+        <ion-card-subtitle>
+          <img src="../../assets/img/icone-descricao.png"> Descrição
+        </ion-card-subtitle>
+      </ion-card-header>
+      <ion-item>
+        <ion-textarea id="description" rows="16" placeholder="Insira uma descrição detalhada sobre a denúncia." [(ngModel)]="formData.description" name="description" required></ion-textarea>
+      </ion-item>
+    </ion-card>
+
+    <ion-card >
+      <ion-card-header>
+        <ion-card-subtitle>
+          <img src="../../assets/img/icone-upload.png"> Foto de anexo
+        </ion-card-subtitle>
+      </ion-card-header>
+
+      <ion-item>
+        <ion-thumbnail slot="start">
+          <div class="imageBox">
+            <ion-img *ngIf="reportImage" [src]="reportImage"></ion-img>
+            <ion-img *ngIf="!reportImage" src="../../assets/img/avatar.png"></ion-img>
+          </div>
+        </ion-thumbnail>
+
+        <ion-button *ngIf="!reportImage" slot="end" color="light" size="small" (click)="takePicture()">Adicionar
+        </ion-button>
+        <ion-button *ngIf="reportImage" slot="end" color="danger" size="small" (click)="removePicture()">Remover
+        </ion-button>
+      </ion-item>
+    </ion-card>
+
+    <ion-card >
+      <ion-button type="submit" class="btnDefault">Cadastrar</ion-button>
+    </ion-card>
+  </form>
+</ion-content>

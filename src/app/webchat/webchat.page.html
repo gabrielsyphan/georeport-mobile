@@ -1,0 +1,13 @@
+<ion-content class="class-name">
+  <div class="messageContainer">
+      <div class="messageBox {{message.msgClass}}" *ngFor="let message of this.messages">
+        <p class="userName">{{message.user}}:</p>
+        <p>{{message.msg}}</p>
+      </div>
+  </div>
+
+  <ion-item class="ion-message">
+    <ion-input id="userMessage" type="text" placeholder="Mensagem" [(ngModel)]="userMessage"></ion-input>
+    <ion-icon name="send" (click)="sendMessage()"></ion-icon>
+  </ion-item>
+</ion-content>

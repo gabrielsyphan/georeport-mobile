@@ -14,3 +14,26 @@
   color: #0382c2;
   display: none;
 }
+
+.results {
+  background-color: white;
+  opacity: 0.8;
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  width: 320px;
+  height: 480px;
+  overflow-y: scroll;
+}
+
+img {
+  width: 150px;
+}
+
+.menu-outline {
+  margin-top: 12px;
+}
+
+.menu-outline-left{
+  margin-top: 12px;
+}

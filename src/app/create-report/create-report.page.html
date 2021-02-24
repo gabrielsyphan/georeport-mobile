@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar color="primary">
     <ion-title>
-      <img src="../../assets/img/icone-notificacao.png"> Cadastrar denúncia
+      Cadastrar denúncia <ion-icon class="menu-outline" name="menu-outline" (click)="this.reportService.openMenu()"></ion-icon>
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -62,7 +62,7 @@
         </ion-card-subtitle>
       </ion-card-header>
       <ion-item>
-        <ion-datetime id="date" displayFormat="DD/MM/YYYY" placeholder="Selecione o prazo de conclusão da denúncia" min="2019" max="2099-12-31" [(ngModel)]="formData.date" name="date" required></ion-datetime>
+        <ion-datetime id="date" placeholder="Selecione o prazo de conclusão da denúncia" min="2020" max="2099-12-31" [(ngModel)]="formData.date" name="date" required></ion-datetime>
       </ion-item>
     </ion-card>
 
@@ -100,7 +100,7 @@
     </ion-card>
 
     <ion-card >
-      <ion-button type="submit" class="btnDefault" (click)="createReport()">Cadastrar</ion-button>
+      <ion-button type="submit" class="btnDefault">Cadastrar</ion-button>
     </ion-card>
   </form>
   <!--  <div style="width: 100%; position: relative; bottom: -5px">-->

@@ -29,8 +29,8 @@ export class EditReportPage implements OnInit {
       if (report.id === this.reportId) {
         this.reportData = report;
         // tslint:disable-next-line:radix
-        this.reportData.type = parseInt(this.reportData.type);
         this.reportImage = this.reportData.image;
+        console.log(this.reportData);
       }
     });
   }
@@ -89,6 +89,8 @@ export class EditReportPage implements OnInit {
     if (!description) {
       description = this.reportData.description;
     }
+
+    console.log(type, title, description, process, date);
 
     await this.reportService.updateReport (this.reportId, type, title, process, date, description, this.reportImage);
   }

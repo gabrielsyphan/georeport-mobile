@@ -1,7 +1,7 @@
 .imgLogo{
     left: 20%;
     position: absolute;
-    top: 25%;
+    top: 24%;
     width: 60%;
     z-index: 9;
 }
@@ -29,12 +29,6 @@ ion-content{
     right: 5%;
 }
 
-ion-item{
-    --background: white;
-    --color: black;
-    border-radius: 20px 20px 20px;
-}
-
 ion-icon{
 	color: #254d65;
 }
@@ -46,7 +40,12 @@ ion-icon{
     right: 10%;
     color: #9e9e9e;
     height: 0.4px;
-    font-size: 12px;	
+    font-size: 12px;
+}
+
+.signUp {
+    font-weight: bold;
+    color: #df514f;
 }
 
 .btnTransition{
@@ -88,7 +87,7 @@ p{
     color: #254d65;    
 }
 
-.diMessage{
+.divMessage{
     width: 100%;
     text-align: center;
 }
@@ -96,3 +95,43 @@ p{
 .myInput{
     background: transparent;
 }
+
+.btnTransition{
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btnTransition:before{
+    content: "";
+    width: 0;
+    height: 0;
+    border-radius: 100%;
+    background-color: white;
+    position: absolute;
+    z-index: 9999;
+    animation-duration: 1s;
+    animation-name: btnTransition;
+}
+
+@keyframes btnTransition {
+    from {
+        height: 0;
+        width: 0;
+    }
+
+    to {
+        width: 200vh;
+        height: 200vh;
+    }
+}
+
+ion-item.item-has-focus > ion-icon{
+    color: #df514f;
+}
+
+ion-input {
+    margin-left: 20px;
+}
+
